@@ -1,14 +1,166 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>AngElectron2</title>
-  <base href="/">
+  <base href="./">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
+  <input type="button" id="select-file" value="create a file" />
   <app-root></app-root>
 </body>
+<script>
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('db.json')
+const db = low(adapter)
+
+
+db.defaults({ posts: [], user: {}, count: 0 })
+  .write()
+
+
+db.get('posts')
+  .push({ id: 1, title: 'lowdb is awesome'})
+  .write()
+
+db.set('user.name', 'typicode')
+  .write()
+  
+
+db.update('count', n => n + 1)
+  .write()
+  //   var ZIP_FILE_PATH = "F:/path/to/file/savechanges.zip";
+  // var DESTINATION_PATH = "F:/IBS_VESSELREPORT_APPS";
+  // var unzipper = new DecompressZip(ZIP_FILE_PATH);
+  // var DecompressZip = require('decompress-zip');
+  // var app = require('electron').remote;
+  // var dialog = app.dialog;
+
+  // (function () {
+  //   function uncompress(ZIP_FILE_PATH, DESTINATION_PATH) {
+  //     var unzipper = new DecompressZip(ZIP_FILE_PATH);
+  //     unzipper.on('error', function (err) {
+  //       console.log('Caught an error', err);
+  //     });
+
+  //     unzipper.on('extract', function (log) {
+  //       console.log('Finished extracting', log);
+  //     });
+
+      
+  //     unzipper.on('progress', function (fileIndex, fileCount) {
+  //       console.log('Extracted file ' + (fileIndex + 1) + ' of ' + fileCount);
+  //     });
+
+      
+  //     unzipper.extract({
+  //       path: DESTINATION_PATH
+  //     });
+  //   }
+
+  //   document.getElementById("select-file").addEventListener("click", () => {
+     
+  //     dialog.showOpenDialog({
+  //       title: "Select the .zip file to decompress"
+  //     }, function (fileNames) {
+       
+  //       if (fileNames === undefined) {
+  //         console.log("No file selected");
+  //         return;
+  //       } else {
+       
+  //         dialog.showOpenDialog({
+  //           title: "Select destination folder where the content should be decompressed",
+  //           properties: ["openDirectory"]
+  //         }, function (folderPaths) {
+          
+  //           if (fileNames === undefined) {
+  //             console.log("No destination folder selected");
+  //             return;
+  //           } else {
+  //             uncompress(fileNames[0], folderPaths[0]);
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }, false);
+  // })();
+  // var nodemailer = require("nodemailer");
+
+// const transporter = nodemailer.createTransport({
+//     port: 4200,
+//     host: '192.168.18.210',
+// });
+
+// const mailOptions = {
+//     from: 'aarthy.t@solverminds.com', // sender address
+//     to: 'pushpa.d@solverminds.com', // list of receivers
+//     subject: 'Hello World', // Subject line
+//     html: '<h1>Hello!</h1>', // html body
+// };
+
+
+  // const fs = require("fs");  //fs module
+  // const { dialog } = require("electron").remote;
+
+//    document.getElementById('buttoncreated').addEventListener('click', function () {
+
+
+// var transporter = nodemailer.createTransport({
+//   service: 'Gmail',
+//   auth: {
+//     user: 'aarthysri6@gmail.com',
+//     pass: 'AarthyKa21'
+//   }
+// });
+
+// var mailOptions = {
+//   from: 'aarthysri6@gmail.com',
+//   to: 'pushpasanthi1994@gmail.com',
+//   subject: 'Sending Email using Node.js',
+//   text: 'That was easy!'
+// };
+
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
+// }, false);
+  //   // var content = document.getElementById("buttoncreated").value;
+  //  let content="hello,this is the content of the new file."
+  //   dialog.showSaveDialog(function (fileName) {
+  //     if (fileName === undefined) {
+  //       console.log("You didn't save the file");
+  //       return;
+  //     }
+
+  //     fs.writeFile(fileName, content, function (err) {
+  //       if (err) {
+  //         alert("An error ocurred creating the file " + err.message)
+  //       }
+
+  //       alert("The file has been succesfully saved");
+  //     });
+  //     fs.readFile(filepath, 'utf-8', (err, data) => {
+  //       if(err){
+  //           alert("An error ocurred reading the file :" + err.message);
+  //           return;
+  //       }
+  //       console.log("The file content is : " + data);
+  //   });
+  //   });
+
+
+</script>
+
 </html>

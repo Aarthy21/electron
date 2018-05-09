@@ -2,13 +2,18 @@
   "name": "ang-electron2",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "ng build && electron .",
+    "electron-aot": "ng build --prod && electron .",
+    "package": "electron-packager . Windowsapp --platform=win32 --arch=x64",
+    "archive": "asar pack Windowsapp-win32-x64/resources/app Windowsapp-win32-x64/resources/app.asar"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +27,10 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "decompress-zip": "^0.3.0",
+    "electron-json-storage": "^4.0.2",
+    "lowdb": "^1.0.0",
+    "nodemailer": "^4.6.2",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -32,7 +41,11 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "asar": "^0.14.3",
     "codelyzer": "^4.0.1",
+    "electron": "^1.8.3",
+    "electron-builder": "^20.5.1",
+    "electron-packager": "^11.1.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
